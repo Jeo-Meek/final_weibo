@@ -1,4 +1,4 @@
 @extends('layouts.default')
-@section('content');
-<h1> Hello world </h1>
+@section('content')
+    <h1>这是首页</h1>
 @stop
