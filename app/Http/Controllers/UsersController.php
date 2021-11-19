@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -31,6 +32,7 @@ class UsersController extends Controller
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
         ]);
+        Auth::login($user);
         session()->flash('success', '注册成功');
         // 这边还是需要理解create的用法，直接返回一个用户对象，包含热乎的信息
         return redirect()->route('users.show', [$user]); // route 方法会自动获取模型的实例的id
